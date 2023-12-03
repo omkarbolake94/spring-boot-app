@@ -12,7 +12,25 @@ pipeline
 		       sh 'mvn clean install'
 			        }
 		   }
-	  
+		   
+		stage("test The code")
+		    {
+		      steps{
+                   sh 'mvn test'			  
+			  }
+			}  
+	
+		stage("Build Docker Image")
+		      {
+			  
+			  steps{
+			  
+			  docker build -t myjob_$BUILD_NUMBER
+			       }
+			  
+			  }
+		
+	 
 	 }
   
      
